@@ -9,7 +9,7 @@ Which can be accessed from here [https://github.com/cullenjett/react-ssr-boilerp
 
 ## Development
 
-- `npm start`
+- `npm run start:dev`
   - Start the dev server at [http://localhost:3000](http://localhost:3000)
 
 ## Production

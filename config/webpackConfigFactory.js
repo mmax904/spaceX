@@ -8,7 +8,8 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const { getAppEnv } = require('./env');
@@ -28,7 +29,7 @@ module.exports = function(envType) {
 
   config.mode = envType;
 
-  config.devtool = IS_DEV ? 'cheap-module-source-map' : 'source-map';
+  config.devtool = IS_DEV && 'cheap-module-source-map';
 
   config.entry = IS_DEV
     ? [
@@ -144,16 +145,25 @@ module.exports = function(envType) {
   config.optimization = IS_DEV
     ? {}
     : {
+        // minimize:true,
         minimizer: [
-          new UglifyJsPlugin({
-            parallel: true,
-            sourceMap: true,
-            uglifyOptions: {
-              output: {
-                comments: false
-              }
-            }
-          }),
+          // new UglifyJsPlugin({
+          //   parallel: true,
+          //   sourceMap: true,
+          //   uglifyOptions: {
+          //     output: {
+          //       comments: false
+          //     }
+          //   }
+          // }),
+        //   new TerserPlugin({
+        //     terserOptions: {
+        //             extractComments: 'all',
+        //             compress: {
+        //                     drop_console: true
+        //             },
+        //     }
+        //  }),
           new OptimizeCSSAssetsPlugin({})
         ]
       };

@@ -8,12 +8,13 @@
   "author": "Manish",
   "license": "ISC",
   "scripts": {
-    "start": "npm run build && node ./build/server",
+    "start": "npm run start:prod",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "start:prod": "node scripts/startProd.js",
     "lint": "eslint src/**/*.js",
-    "format": "prettier --write \"src/**/*.{js,json,css,md}\""
+    "format": "prettier --write \"src/**/*.{js,json,css,md}\"",
+    "heroku-postbuild": "npm run build"
   },
   "husky": {
     "hooks": {

@@ -3,7 +3,7 @@ import { head, join } from 'lodash';
 
 const CardItem = ({item}) => {
     const getlandSuccess = (i) => {
-        return head(i.rocket?.first_stage?.cores)?.land_success ? 'true' : 'false';
+        return head(i?.rocket?.first_stage?.cores)?.land_success ? 'true' : 'false';
     }
     return(
         <div className="card-container-item">

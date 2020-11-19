@@ -1,7 +1,10 @@
 import React from 'react';
-import { join } from 'lodash';
+import { head, join } from 'lodash';
 
 const CardItem = ({item}) => {
+    const getlandSuccess = (i) => {
+        return head(i.rocket?.first_stage?.cores)?.land_success ? 'true' : 'false';
+    }
     return(
         <div className="card-container-item">
             <div className="card-container-item-image">
@@ -12,7 +15,7 @@ const CardItem = ({item}) => {
                 <p><span>Mission Ids:</span>{join(item.mission_id,', ') || '-'}</p>
                 <p><span>Launch Year:</span>{item.launch_year}</p>
                 <p><span>Successful Launch:</span>{item.launch_success ? 'true' : 'false'}</p>
-                <p><span>Successful Landing:</span>{item.launch_landing || '-'}</p>
+                <p><span>Successful Landing:</span>{getlandSuccess(item)}</p>
             </div>
         </div>
     )

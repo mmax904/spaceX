@@ -38,7 +38,7 @@ const LaunchList = ({history}) => {
     ]
 
     const getLaunchData = useCallback(async () => {
-        setFilters({...q});
+        setFilters({limit:100,...q});
         setLoading(true);
         try {
             const launchData = await api.launches.get(`?${new URLSearchParams(q)}`);
